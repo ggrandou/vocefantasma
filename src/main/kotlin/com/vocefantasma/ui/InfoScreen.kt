@@ -29,6 +29,12 @@ fun InfoScreen() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
+        Image(
+            painter = painterResource(id = R.drawable.splashscreen),
+            contentDescription = null,
+            modifier = Modifier.size(160.dp)
+        )
+        Spacer(modifier = Modifier.height(16.dp))
         Text(
             "Voce Fantasma Di Milano",
             style = MaterialTheme.typography.headlineLarge,
