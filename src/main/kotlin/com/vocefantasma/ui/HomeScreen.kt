@@ -11,6 +11,8 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -72,31 +74,49 @@ fun HomeScreen(viewModel: MainViewModel) {
             )
 
             val infiniteTransition = rememberInfiniteTransition()
-            val scale by infiniteTransition.animateFloat(
-                initialValue = 1f,
-                targetValue = if (autoState != AutoState.IDLE) 1.1f else 1f,
+            val glowFraction by infiniteTransition.animateFloat(
+                initialValue = 0.4f,
+                targetValue = if (autoState != AutoState.IDLE) 1.0f else 0.4f,
                 animationSpec = infiniteRepeatable(
-                    animation = tween(1000, easing = LinearEasing),
+                    animation = tween(1200, easing = FastOutSlowInEasing),
                     repeatMode = RepeatMode.Reverse
                 )
             )
 
-            Surface(
+            Box(
+                contentAlignment = Alignment.Center,
                 modifier = Modifier
-                    .size(200.dp)
-                    .clip(CircleShape)
-                    .clickable { viewModel.onMainButtonClick() }
-                    .padding((200 * (scale - 1)).dp / 2),
-                color = buttonColor,
-                shadowElevation = 8.dp
+                    .size(300.dp)
+                    .drawBehind {
+                        drawCircle(
+                            brush = Brush.radialGradient(
+                                colors = listOf(
+                                    buttonColor.copy(alpha = 0.55f),
+                                    Color.Transparent
+                                ),
+                                center = center,
+                                radius = size.minDimension / 2f * glowFraction
+                            ),
+                            radius = size.minDimension / 2f
+                        )
+                    }
             ) {
-                Box(contentAlignment = Alignment.Center) {
-                    Text(
-                        text = if (mode == AppMode.MANUAL) "PARLER" else if (autoState == AutoState.IDLE) "START" else "STOP",
-                        color = Color.White,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 24.sp
-                    )
+                Surface(
+                    modifier = Modifier
+                        .size(200.dp)
+                        .clip(CircleShape)
+                        .clickable { viewModel.onMainButtonClick() },
+                    color = buttonColor,
+                    shadowElevation = 8.dp
+                ) {
+                    Box(contentAlignment = Alignment.Center) {
+                        Text(
+                            text = if (mode == AppMode.MANUAL) "PARLER" else if (autoState == AutoState.IDLE) "START" else "STOP",
+                            color = Color.White,
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 24.sp
+                        )
+                    }
                 }
             }
         }

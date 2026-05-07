@@ -34,6 +34,7 @@ fun VoceFantasmaApp(viewModel: MainViewModel) {
         )
         Scaffold(
             containerColor = Color.Transparent,
+            contentColor = Color(0xFFDDDDDD),
             bottomBar = {
                 NavigationBar(containerColor = Color.Black.copy(alpha = 0.5f)) {
                     val screens = listOf(Screen.Home, Screen.Catalogue, Screen.Settings, Screen.Info)
