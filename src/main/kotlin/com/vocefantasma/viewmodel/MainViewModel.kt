@@ -40,6 +40,7 @@ class MainViewModel(
 
     val currentDb = silenceDetector.currentDb
     val isSilent = silenceDetector.isSilent
+    val availableVoices = ttsManager.availableVoices
 
     fun setMode(mode: AppMode) {
         _mode.value = mode
@@ -68,7 +69,8 @@ class MainViewModel(
                 phrase,
                 collection.language,
                 _settings.value.ttsPitch,
-                _settings.value.ttsRate
+                _settings.value.ttsRate,
+                _settings.value.ttsVoiceName
             )
         }
     }

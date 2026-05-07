@@ -4,7 +4,10 @@ import java.util.UUID
 
 enum class Language(val code: String) {
     ITALIAN("it"),
-    FRENCH("fr")
+    FRENCH("fr"),
+    ENGLISH("en"),
+    GERMAN("de"),
+    SPANISH("es")
 }
 
 data class PhraseCollection(
@@ -22,7 +25,8 @@ data class AppSettings(
     val minWaitSeconds: Int = 1,
     val maxWaitSeconds: Int = 10,
     val ttsPitch: Float = 1.0f,
-    val ttsRate: Float = 1.0f
+    val ttsRate: Float = 1.0f,
+    val ttsVoiceName: String? = null
 )
 
 object DefaultData {

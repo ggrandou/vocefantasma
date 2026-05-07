@@ -10,6 +10,7 @@ import androidx.compose.ui.unit.dp
 import com.vocefantasma.viewmodel.MainViewModel
 import kotlin.math.roundToInt
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingsScreen(viewModel: MainViewModel) {
     val settings by viewModel.settings.collectAsState()
@@ -72,6 +73,47 @@ fun SettingsScreen(viewModel: MainViewModel) {
 
         Text("TTS", style = MaterialTheme.typography.headlineSmall)
         Spacer(modifier = Modifier.height(16.dp))
+
+        /* Desactive pour le moment
+        Text("Voix")
+        Box(modifier = Modifier.fillMaxWidth()) {
+            OutlinedTextField(
+                value = voices.find { it.name == settings.ttsVoiceName }?.name ?: "Par défaut",
+                onValueChange = {},
+                readOnly = true,
+                modifier = Modifier.fillMaxWidth(),
+                trailingIcon = {
+                    IconButton(onClick = { expanded = true }) {
+                        Icon(Icons.Default.ArrowDropDown, contentDescription = null)
+                    }
+                }
+            )
+            DropdownMenu(
+                expanded = expanded,
+                onDismissRequest = { expanded = false },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                DropdownMenuItem(
+                    text = { Text("Par défaut") },
+                    onClick = {
+                        viewModel.updateSettings(settings.copy(ttsVoiceName = null))
+                        expanded = false
+                    }
+                )
+                voices.forEach { voice ->
+                    DropdownMenuItem(
+                        text = { Text("${voice.name} (${voice.locale.displayLanguage})") },
+                        onClick = {
+                            viewModel.updateSettings(settings.copy(ttsVoiceName = voice.name))
+                            expanded = false
+                        }
+                    )
+                }
+            }
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+        */
 
         Text("Pitch: ${settings.ttsPitch}")
         Slider(
