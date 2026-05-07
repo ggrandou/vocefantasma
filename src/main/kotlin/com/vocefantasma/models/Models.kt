@@ -27,7 +27,7 @@ data class AppSettings(
 
 object DefaultData {
     val itPizza = PhraseCollection(
-        name = "IT pizza",
+        name = "🇮🇹 pizza",
         language = Language.ITALIAN,
         isDefault = true,
         phrases = listOf(
@@ -46,7 +46,7 @@ object DefaultData {
     )
 
     val frPizza = PhraseCollection(
-        name = "FR pizza",
+        name = "🇫🇷 pizza",
         language = Language.FRENCH,
         isDefault = true,
         phrases = listOf(
