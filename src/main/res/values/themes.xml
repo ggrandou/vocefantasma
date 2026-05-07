@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.VoceFantasma" parent="@android:style/Theme.Material.NoActionBar" />
+
+    <style name="Theme.VoceFantasma.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">#000000</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splashscreen</item>
+        <item name="postSplashScreenTheme">@style/Theme.VoceFantasma</item>
+    </style>
+
+</resources>
