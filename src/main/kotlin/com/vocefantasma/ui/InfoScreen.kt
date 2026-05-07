@@ -1,5 +1,6 @@
 package com.vocefantasma.ui
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -7,8 +8,12 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.vocefantasma.R
 
 @Composable
 fun InfoScreen() {
@@ -46,5 +51,33 @@ fun InfoScreen() {
             style = MaterialTheme.typography.bodyMedium,
             textAlign = TextAlign.Center
         )
+        Spacer(modifier = Modifier.height(40.dp))
+        CreditRow(
+            imageRes = R.drawable.mikedyson21,
+            text = "sur une idée de MikeDyson21 dans CQFD"
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+        CreditRow(
+            imageRes = R.drawable.rockfort,
+            text = "réalisation Rockfort"
+        )
+    }
+}
+
+@Composable
+private fun CreditRow(imageRes: Int, text: String) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center
+    ) {
+        Image(
+            painter = painterResource(id = imageRes),
+            contentDescription = null,
+            modifier = Modifier
+                .size(48.dp)
+                .clip(CircleShape)
+        )
+        Spacer(modifier = Modifier.width(12.dp))
+        Text(text, style = MaterialTheme.typography.bodyMedium)
     }
 }
