@@ -1,11 +1,15 @@
 package com.vocefantasma.ui
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -61,7 +65,81 @@ fun InfoScreen() {
             imageRes = R.drawable.rockfort,
             text = "réalisation Rockfort"
         )
+        Spacer(modifier = Modifier.height(40.dp))
+        PrivacyPolicySection()
     }
+}
+
+@Composable
+private fun PrivacyPolicySection() {
+    var expanded by remember { mutableStateOf(false) }
+
+    Column(modifier = Modifier.fillMaxWidth()) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable { expanded = !expanded }
+                .padding(vertical = 8.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center
+        ) {
+            Text(
+                "Politique de confidentialité",
+                style = MaterialTheme.typography.titleSmall
+            )
+            Spacer(modifier = Modifier.width(4.dp))
+            Icon(
+                imageVector = if (expanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
+                contentDescription = null
+            )
+        }
+
+        if (expanded) {
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(
+                "Dernière mise à jour : mai 2025",
+                style = MaterialTheme.typography.labelSmall,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.fillMaxWidth()
+            )
+            Spacer(modifier = Modifier.height(12.dp))
+            PrivacyParagraph(
+                title = "Microphone",
+                body = "L'application utilise le microphone uniquement en Mode AUTO pour détecter " +
+                       "les silences et les sons ambiants. L'audio n'est jamais enregistré, " +
+                       "stocké ni transmis. Le traitement s'effectue entièrement sur l'appareil, " +
+                       "en temps réel."
+            )
+            PrivacyParagraph(
+                title = "Données personnelles",
+                body = "Aucune donnée personnelle n'est collectée. L'application ne crée pas " +
+                       "de compte utilisateur, n'accède pas aux contacts, à la localisation, " +
+                       "ni à aucun autre capteur ou fichier."
+            )
+            PrivacyParagraph(
+                title = "Réseau",
+                body = "L'application ne dispose d'aucune permission réseau et ne communique " +
+                       "avec aucun serveur externe."
+            )
+            PrivacyParagraph(
+                title = "Analytique et publicité",
+                body = "L'application ne contient aucun SDK d'analyse, de publicité ou de suivi."
+            )
+            PrivacyParagraph(
+                title = "Contact",
+                body = "Pour toute question concernant cette politique, contactez le développeur " +
+                       "via la fiche de l'application sur le Google Play Store."
+            )
+        }
+    }
+}
+
+@Composable
+private fun PrivacyParagraph(title: String, body: String) {
+    Text(title, style = MaterialTheme.typography.labelMedium)
+    Spacer(modifier = Modifier.height(4.dp))
+    Text(body, style = MaterialTheme.typography.bodySmall, textAlign = TextAlign.Start)
+    Spacer(modifier = Modifier.height(12.dp))
 }
 
 @Composable
