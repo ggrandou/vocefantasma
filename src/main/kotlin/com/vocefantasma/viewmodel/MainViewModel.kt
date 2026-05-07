@@ -100,7 +100,7 @@ class MainViewModel(
     }
 
     private suspend fun runStateMachine() {
-        while (isActive) {
+        while (currentCoroutineContext().isActive) {
             when (_autoState.value) {
                 AutoState.LISTENING -> {
                     // Wait for sound (not silent)

@@ -5,12 +5,15 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.darkColorScheme
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.vocefantasma.audio.SilenceDetector
 import com.vocefantasma.audio.TtsManager
 import com.vocefantasma.ui.VoceFantasmaApp
 import com.vocefantasma.viewmodel.MainViewModel
-import com.vocefantasma.viewmodel.MainViewModelFactory
 
 class MainActivity : ComponentActivity() {
     
@@ -49,12 +52,11 @@ class MainActivity : ComponentActivity() {
 }
 
 // Minimal Factory for ViewModel without DI framework
-import androidx.lifecycle.ViewModelProvider
 class MainViewModelFactory(
     private val ttsManager: TtsManager,
     private val silenceDetector: SilenceDetector
 ) : ViewModelProvider.Factory {
-    override fun <T : androidx.lifecycle.ViewModel> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return MainViewModel(ttsManager, silenceDetector) as T
     }
 }
