@@ -31,17 +31,17 @@ object DefaultData {
         language = Language.ITALIAN,
         isDefault = true,
         phrases = listOf(
-            "Margherita", "Marinara", "Quattro Stagioni", "Carbonara", "Quattro Formaggi",
-            "Napoletana", "Capricciosa", "Diavola", "Boscaiola", "Frutti di Mare",
-            "Prosciutto e Funghi", "Ortolana", "Bufalina", "Tonno e Cipolla", "Calzone",
-            "Focaccia al Rosmarino", "Salsiccia e Friarielli", "Pugliese", "Romana", "Siciliana",
-            "Tirolese", "Valtellinese", "Americana", "Viennese", "Messicana",
-            "Bismark", "Mimosa", "Parmigiana", "Zucchini e Gamberetti", "Tartufata",
-            "Pesto e Pomodorini", "Bresaola e Rucola", "Stracchino e Crudo", "Patatosa", "Caprese",
-            "Fiori di Zucca", "Cacio e Pepe", "Amatriciana", "Gricia", "Norcina",
-            "Radicchio e Gorgonzola", "Speck e Mascarpone", "Porcini e Provola", "Melanzane", "Peperoni",
-            "Friarielli e Burrata", "Acciughe e Capperi", "Mortadella e Pistacchio", "Nduja e Stracciatella", "Cotto e Mais",
-            "Spinaci e Ricotta", "Uovo e Pancetta", "Salmone e Philadelphia", "Tartufo Bianco", "Porchetta"
+            "Pizza Margherita", "Pizza Marinara", "Pizza Quattro Stagioni", "Pizza Carbonara", "Pizza Quattro Formaggi",
+            "Pizza Napoletana", "Pizza Capricciosa", "Pizza Diavola", "Pizza Boscaiola", "Pizza Frutti di Mare",
+            "Pizza Prosciutto e Funghi", "Pizza Ortolana", "Pizza Bufalina", "Pizza Tonno e Cipolla", "Pizza Calzone",
+            "Pizza Focaccia al Rosmarino", "Pizza Salsiccia e Friarielli", "Pizza Pugliese", "Pizza Romana", "Pizza Siciliana",
+            "Pizza Tirolese", "Pizza Valtellinese", "Pizza Americana", "Pizza Viennese", "Pizza Messicana",
+            "Pizza Bismark", "Pizza Mimosa", "Pizza Parmigiana", "Pizza Zucchini e Gamberetti", "Pizza Tartufata",
+            "Pizza Pesto e Pomodorini", "Pizza Bresaola e Rucola", "Pizza Stracchino e Crudo", "Pizza Patatosa", "Pizza Caprese",
+            "Pizza Fiori di Zucca", "Pizza Cacio e Pepe", "Pizza Amatriciana", "Pizza Gricia", "Pizza Norcina",
+            "Pizza Radicchio e Gorgonzola", "Pizza Speck e Mascarpone", "Pizza Porcini e Provola", "Pizza Melanzane", "Pizza Peperoni",
+            "Pizza Friarielli e Burrata", "Pizza Acciughe e Capperi", "Pizza Mortadella e Pistacchio", "Pizza Nduja e Stracciatella", "Pizza Cotto e Mais",
+            "Pizza Spinaci e Ricotta", "Pizza Uovo e Pancetta", "Pizza Salmone e Philadelphia", "Pizza Tartufo Bianco", "Pizza Porchetta"
         )
     )
 
@@ -50,17 +50,17 @@ object DefaultData {
         language = Language.FRENCH,
         isDefault = true,
         phrases = listOf(
-            "Reine", "Marguerita", "Quatre Fromages", "Royale", "Calzone",
-            "Napolitaine", "Hawaïenne", "Orientale", "Campione", "Végétarienne",
-            "Bolognaise", "Pêcheur", "Nordique", "Chèvre Miel", "Savoyarde",
-            "Tartiflette", "Auvergnate", "Paysanne", "Indienne", "Kebab",
-            "Mexicaine", "Texane", "Burger", "Cannibale", "Fermière",
-            "Sicilienne", "Romaine", "Provençale", "Niçoise", "Alsacienne",
-            "Carbonara", "Berrichonne", "Corse", "Basque", "Bretonne",
-            "Océane", "Saumon", "Thon", "Fruits de Mer", "Saint-Jacques",
-            "Magret", "Périgourdine", "Landaise", "Gersoise", "Aveyronnaise",
-            "Seguin", "Chorizo", "Andalouse", "Barcelonaise", "Madrid", "Valence",
-            "Lisbonne", "Porto", "Monaco"
+            "Pizza Reine", "Pizza Marguerita", "Pizza Quatre Fromages", "Pizza Royale", "Pizza Calzone",
+            "Pizza Napolitaine", "Pizza Hawaïenne", "Pizza Orientale", "Pizza Campione", "Pizza Végétarienne",
+            "Pizza Bolognaise", "Pizza Pêcheur", "Pizza Nordique", "Pizza Chèvre Miel", "Pizza Savoyarde",
+            "Pizza Tartiflette", "Pizza Auvergnate", "Pizza Paysanne", "Pizza Indienne", "Pizza Kebab",
+            "Pizza Mexicaine", "Pizza Texane", "Pizza Burger", "Pizza Cannibale", "Pizza Fermière",
+            "Pizza Sicilienne", "Pizza Romaine", "Pizza Provençale", "Pizza Niçoise", "Pizza Alsacienne",
+            "Pizza Carbonara", "Pizza Berrichonne", "Pizza Corse", "Pizza Basque", "Pizza Bretonne",
+            "Pizza Océane", "Pizza Saumon", "Pizza Thon", "Pizza Fruits de Mer", "Pizza Saint-Jacques",
+            "Pizza Magret", "Pizza Périgourdine", "Pizza Landaise", "Pizza Gersoise", "Pizza Aveyronnaise",
+            "Pizza Seguin", "Pizza Chorizo", "Pizza Andalouse", "Pizza Barcelonaise", "Pizza Madrid", "Pizza Valence",
+            "Pizza Lisbonne", "Pizza Porto", "Pizza Monaco"
         )
     )
 
