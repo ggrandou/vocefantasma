@@ -37,27 +37,12 @@ fun HomeScreen(viewModel: MainViewModel) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween
     ) {
-        // Top: Collection Selector
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Text("Collection", style = MaterialTheme.typography.labelLarge)
-            var expanded by remember { mutableStateOf(false) }
-            Box {
-                TextButton(onClick = { expanded = true }) {
-                    Text(currentCollection.name, fontSize = 20.sp, fontWeight = FontWeight.Bold)
-                }
-                DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
-                    availableCollections.forEach { collection ->
-                        DropdownMenuItem(
-                            text = { Text(collection.name) },
-                            onClick = {
-                                viewModel.setCollection(collection)
-                                expanded = false
-                            }
-                        )
-                    }
-                }
-            }
-        }
+        // Top: Titre
+        Text(
+            "Voce Fantasma Di Milano",
+            style = MaterialTheme.typography.titleLarge,
+            fontWeight = FontWeight.Bold
+        )
 
         // Center: Spirit Button
         Box(contentAlignment = Alignment.Center) {
@@ -121,10 +106,36 @@ fun HomeScreen(viewModel: MainViewModel) {
             }
         }
 
-        // Bottom: Mode & Visualizer
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        // Bottom: Collection + Mode + Visualizer (hauteur fixe pour éviter les décalages)
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            // Collection Selector
+            Text("Collection", style = MaterialTheme.typography.labelLarge)
+            var expanded by remember { mutableStateOf(false) }
+            Box {
+                TextButton(onClick = { expanded = true }) {
+                    Text(currentCollection.name, fontSize = 18.sp, fontWeight = FontWeight.Bold)
+                }
+                DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+                    availableCollections.forEach { collection ->
+                        DropdownMenuItem(
+                            text = { Text(collection.name) },
+                            onClick = {
+                                viewModel.setCollection(collection)
+                                expanded = false
+                            }
+                        )
+                    }
+                }
+            }
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            // Mode toggle
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Text("MANUAL")
+                Text("MANUEL")
                 Switch(
                     checked = mode == AppMode.AUTO,
                     onCheckedChange = { viewModel.setMode(if (it) AppMode.AUTO else AppMode.MANUAL) },
@@ -133,18 +144,21 @@ fun HomeScreen(viewModel: MainViewModel) {
                 Text("AUTO")
             }
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(8.dp))
 
-            if (mode == AppMode.AUTO) {
-                Text("État: ${autoState.name}")
-                Spacer(modifier = Modifier.height(8.dp))
-                // Simple DB visualizer
-                LinearProgressIndicator(
-                    progress = (currentDb + 100) / 100,
-                    modifier = Modifier.fillMaxWidth().height(8.dp),
-                    color = if (isSilent) Color.Green else Color.Red
-                )
-            }
+            // Auto state info — toujours présent pour garder une hauteur fixe
+            Text(
+                text = if (mode == AppMode.AUTO) "État: ${autoState.name}" else "",
+                style = MaterialTheme.typography.bodySmall,
+                modifier = Modifier.height(20.dp)
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            LinearProgressIndicator(
+                progress = if (mode == AppMode.AUTO) (currentDb + 100) / 100 else 0f,
+                modifier = Modifier.fillMaxWidth().height(8.dp),
+                color = if (isSilent) Color.Green else Color.Red,
+                trackColor = if (mode == AppMode.AUTO) Color.DarkGray else Color.Transparent
+            )
         }
     }
 }
